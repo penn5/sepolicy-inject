@@ -353,13 +353,13 @@ int add_file_transition(char *srcS, char *origS, char *tgtS, char *c, char* file
 	new_transition->stype = src->s.value;
 	new_transition->ttype = orig->s.value;
 	new_transition->tclass = cls->s.value;
-	new_transition->otype = tgt->s.value;
 	new_transition->name = strdup(filename);
-	new_transition->next = policy->filename_trans;
 
-	policy->filename_trans = new_transition;
+	filename_trans_datum_t *otype = cmalloc(sizeof(*otype));
+	otype->otype = tgt->s.value;
 
-	return 0;
+
+	return hashtab_insert(policy->filename_trans, (hashtab_key_t) new_transition, otype);
 }
 
 int add_type(char *domainS, char *typeS, policydb_t *policy) {
