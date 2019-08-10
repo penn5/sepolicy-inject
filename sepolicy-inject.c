@@ -473,7 +473,6 @@ static int add_file_transition(char *srcS, char *origS, char *tgtS,
 	new_transition = cmalloc(sizeof(*new_transition));
 	new_transition->stype  = src->s.value;
 	new_transition->ttype  = orig->s.value;
-	new_transition->otype  = tgt->s.value;
 	new_transition->tclass = cls->s.value;
 	new_transition->name   = strdup(filename);
 
