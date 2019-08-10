@@ -117,6 +117,9 @@ static type_datum_t *create_domain(char *d, policydb_t *policy)
 
 	r = symtab_insert(policy, SYM_TYPES, strdup(d), src,
 			  SCOPE_DECL, 1, &value);
+	if (r != 0)
+		goto fail;
+
 	src->s.value = value;
 
 	if (ebitmap_set_bit(&policy->global->branch_list->declared.scope[SYM_TYPES], value - 1, 1))
