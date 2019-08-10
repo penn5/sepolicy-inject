@@ -645,7 +645,6 @@ int main(int argc, char **argv)
 	sidtab_t sidtab;
 	policydb_t policydb;
 	struct policy_file pf;
-	FILE *fp;
 
 	struct option long_options[] = {
 		{"attr", required_argument, NULL, 'a'},
